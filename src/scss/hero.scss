@@ -1,0 +1,438 @@
+%point {
+    width: 15px;
+    height: 15px;
+
+    background: #FFFFFF;
+    border: 2px solid #5E80FE;
+    border-radius: 50%;
+    box-shadow: 0px 0px 15px rgba(82, 131, 255, 0.25);
+}
+
+%union {
+    position: absolute;
+    bottom: 45px;
+    right: -41px;
+    z-index: 20;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    filter: drop-shadow(0px 10px 30px #E4EAFB);
+
+    svg {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+%point__line {
+    content: "";
+    position: absolute;
+    bottom: 0.9rem;
+    right: -26px;
+    z-index: -5;
+    width: 60px;
+    
+    border: 1px solid #D8E0F7;
+    transform: rotate(90deg);
+}
+
+.hero {
+    position: relative;
+    top: 5rem;
+    left: 0;
+
+    width: 100%;
+    height: calc(100vh - 5rem);
+
+    border-top: 1px solid #D8E3FE;
+    background: linear-gradient(180deg, #F4F7FF 0%, #F1F5FF 100%);
+    color: #3D4F9F;
+}
+
+.hero__header {
+    position: relative;
+
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 5.75rem;
+    width: 45%;
+
+    .hero__subtitle {
+        font-family: 'Roboto';
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+    }
+
+    .hero__title {
+        margin-top: 1rem;
+
+        font-weight: 300;
+        font-size: 3rem;
+        line-height: 60px;
+
+        span {
+            font-weight: 500;
+            color: #3D4F9F;
+        }
+    }
+
+    .hero__content {
+        width: 85%;
+        margin: 0 auto;
+        margin-top: 1.7rem;
+
+        font-family: 'Roboto';
+        font-size: 1rem;
+        line-height: 29px;
+        letter-spacing: 0.03em;
+
+        color: #8D96BD;
+    }
+
+    .header__play {
+        margin-top: 1.2rem;
+
+        display: flex;
+        justify-content: center;
+
+        .play_button {
+            position: relative;
+            z-index: 20;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            width: 52px;
+            height: 52px;
+
+            border-radius: 50%;
+            background: #FFFFFF;
+            box-shadow: 0px 10px 50px rgba(201, 209, 231, 0.6);
+
+            transition: all .3s;
+
+            &:hover {
+                background: #5E81FF;
+
+                .play_button-svg {
+                    fill: #fff;
+                }
+            }
+        }
+    }
+}
+
+.hero__diagram {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    z-index: 10;
+
+    svg {
+        margin-bottom: 1.1rem;
+
+        .line__back {
+            stroke-width: 3;
+            fill:none;
+            stroke: none;
+        }
+
+        .line__color {
+            stroke-dashoffset: 0;
+            stroke-dasharray: 1650;
+            stroke: #5F82FF;
+            stroke-width: 3;
+            fill:none;
+            animation: line_stroke 2s ease-in forwards;
+        }
+
+        @keyframes line_stroke {
+            0% {
+                stroke-dashoffset: 1650;
+            }
+            100% {
+                stroke-dashoffset: 140;
+            }
+        } 
+    }
+
+    &-point {
+        @keyframes point__visibility {
+            0% {
+                opacity: 0;
+            }
+            
+            70% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        &--first {
+            @extend %point;
+            position: absolute;
+            bottom: 6.3%;
+            left: 7%;
+
+            animation: point__visibility .4s ease-in;
+
+            &:hover {
+                .hero__diagram-point--union {
+                    @extend %union;
+                }
+
+                &::before {
+                    @extend %point__line;
+                }
+            }
+        }
+
+        &--second {
+            @extend %point;
+            position: absolute;
+            bottom: 15.3%;
+            left: 33%;
+
+            animation: point__visibility 1.2s ease-in;
+
+            &:hover {
+                .hero__diagram-point--union {
+                    @extend %union;
+                }
+                &::before {
+                    @extend %point__line;
+                }
+            }
+        }
+
+        &--third {
+            @extend %point;
+            position: absolute;
+            bottom: 58%;
+            left: 66%;
+
+            animation: point__visibility 1.9s ease-in;
+
+            &:hover {
+                .hero__diagram-point--union {
+                    @extend %union;
+                }
+                &::before {
+                    @extend %point__line;
+                }
+            }
+        }
+
+        &--fourth {
+            @extend %point;
+            position: absolute;
+            bottom: 90%;
+            left: 91%;
+
+            animation: point__visibility 2.3s ease-in;
+
+            &:hover {
+                .hero__diagram-point--union {
+                    @extend %union;
+                }
+                &::before {
+                    @extend %point__line;
+                }
+            }
+
+        }
+    }
+
+    &-dots {
+        position: absolute;
+        bottom: 5%;
+        left: 47.5%;
+        z-index: 10;
+
+        display: flex;justify-content: space-between;
+
+        width: 5%;
+
+        .hero__diagram-dot {
+            width: 8px;
+            height: 8px;
+
+            background: #D1D6E3;
+            border-radius: 50%;
+        }
+
+        .dot__active {
+            background: #5283FF;
+        }
+    }
+}
+
+.hero__decor {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    overflow: hidden;
+
+    .hero__decor-clouds {
+
+        position: relative;
+        top: 0;
+        left: 0;
+
+        .cloud1 {
+            position: absolute;
+            top: 150px;
+            left: 0;
+
+            animation: clouds__left 3.5s ease-in forwards;
+        }
+    
+        .cloud2 {
+            position: absolute;
+            top: 50px;
+            left: 170px;
+
+            animation: clouds__left 3.7s ease-in-out forwards;
+        }
+    
+        .cloud3 {
+            position: absolute;
+            top: 450px;
+            left: 170px;
+
+            animation: clouds__left 4s ease-in-out forwards;
+
+            &__group {
+                position: relative;
+                top: 0;
+                left: 0;
+
+                .cloud3-1 {
+                    position: absolute;
+                    top: 8px;
+                    left: 37px;
+                }
+
+                .cloud3-2 {
+                    position: absolute;
+                    top: 0;
+                    left: -7px;
+                }
+
+                .cloud3-3 {
+                    position: absolute;
+                    top: -10px;
+                    left: 49px;
+                }
+            }
+        }
+
+        .cloud4 {
+            position: absolute;
+            top: 50px;
+            right: 110px;
+
+            animation: clouds__right 4s ease-in forwards;
+            transition: all .5s;
+
+            &__group {
+                position: relative;
+                top: 0;
+                left: 0;
+
+                .cloud4-1 {
+                    position: absolute;
+                    top: 33px;
+                    left: 33px;
+                }
+
+                .cloud4-2 {
+                    position: absolute;
+                    top: -15px;
+                    left: -7px;
+                }
+            }
+        }
+
+        .cloud5 {
+            position: absolute;
+            top: 540px;
+            right: 170px;
+            z-index: 30;
+
+            animation: clouds__right 3.7s ease-in forwards;
+            transition: all .5s;
+
+            &__group {
+                position: relative;
+                top: 0;
+                left: 0;
+
+                .cloud5-1 {
+                    position: absolute;
+                    top: 16px;
+                    left: 83px;
+                }
+
+                .cloud5-2 {
+                    position: absolute;
+                    top: -13px;
+                    left: 67px;
+                }
+            }
+        }
+
+        .cloud6 {
+            position: absolute;
+            top: 440px;
+            right: 0;
+
+            animation: clouds__right 3.5s ease-in forwards;
+            transition: all .5s;
+        }
+    }
+
+    @keyframes clouds__left {
+        0% {
+            left: -400px;
+            opacity: 0;
+        }
+
+        45% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @keyframes clouds__right {
+        0% {
+            right: -400px;
+            opacity: 0;
+        }
+
+        45% {
+            opacity: 0;
+        }
+
+        100% {
+            opacity: 1;
+        }
+    }
+}

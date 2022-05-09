@@ -1,0 +1,27 @@
+.customers {
+    width: 100%;
+    border-top: 1px solid #D8E3FE;
+    margin-top: 5rem;
+}
+
+.customers__logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.customers__logos-item {
+    width: 15%;
+
+    padding: 3.75rem 0;
+    text-align: center;
+
+    
+
+    &:hover {
+        .customers__svg {
+            transition: all .5s;
+            fill: #5982E7;
+        }
+    }
+}
