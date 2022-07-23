@@ -99,11 +99,13 @@ $color: #5E81FE;
         border-radius: 2px;
         color: #3A79FF;
 
-        transition: all .2s;
+        transition: all .8s;
 
         &:hover {
             background: #3A79FF;
             color: #D2E1FF;
+            border-radius: 8px;
+            box-shadow: 2px 2px 3px #5e81fe49;
         }
     }
 
